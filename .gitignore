@@ -1,1 +1,7 @@
-\Assets\Plugins\
+/Assets/Plugins/
+/Build/
+/Assets/Samples/
+/Assets/TextMesh Pro/
+
+/Library/
+/Temp/
