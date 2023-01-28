@@ -12,9 +12,11 @@ public class CodeBlockSelect : MonoBehaviour
     public Material SelectedMaterial;
     private Renderer Renderer;
 
+    public int id;
+
     private TextMeshPro text;
 
-    private GameObject codeBlock = null;
+    public GameObject codeBlock = null;
     
     public GameObject[] AllowedButtonGroups;
 

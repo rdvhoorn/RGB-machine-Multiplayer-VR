@@ -47,19 +47,22 @@ public class MoveGrabber : NetworkBehaviour
 
     // Start grabber movement
     public void StartGrabberMovement() {
-        started = true;
-        // SoftwareState state = softwareComponent.CalculateSoftwareState();
+        // started = true;
+        // TestServerRpc(true, new int[2]{2, 5});
+        SoftwareState state = softwareComponent.CalculateSoftwareState();
 
-        // if (state == SoftwareState.CORRECT || state == SoftwareState.PLAUSIBLE) {
-        //     int[] parameters = softwareComponent.GetCurrentSoftwareParameters();
+        if (state == SoftwareState.CORRECT || state == SoftwareState.PLAUSIBLE) {
+            int[] parameters = softwareComponent.GetCurrentSoftwareParameters();
 
-        //     StartGrabberMovementServerRpc(parameters);
-        // }
+            TestServerRpc(parameters);
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
-    void StartGrabberMovementServerRpc(int[] parameters) {
-        ExecuteGrabberScriptServerRpc(parameters);
+    void TestServerRpc(int[] param) {
+        started = true;
+        parameters = param;
+
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -146,30 +149,4 @@ public class MoveGrabber : NetworkBehaviour
     void CloseGrabberHandleServerRpc() {
 
     }
-
-    [ServerRpc(RequireOwnership = false)]
-    void ExecuteGrabberScriptServerRpc(int[] parameters) {
-        if (!started) return;
-
-        while (transform.position.y < parameters[0]) {
-            transform.position += Vector3.up * upwardsSpeed * Time.deltaTime;
-            transform.Rotate(Vector3.up * rotationalSpeed * Time.deltaTime);     
-        }
-
-        while (leftHandle.transform.rotation.y * 90 < 16) {
-            leftHandle.transform.Rotate(Vector3.down * GrabberSpeed * Time.deltaTime);
-            rightHanlde.transform.Rotate(Vector3.up * GrabberSpeed * Time.deltaTime);
-        }
-
-        while (transform.position.y < parameters[1]) {
-            transform.position += Vector3.up * upwardsSpeed * Time.deltaTime;
-            transform.Rotate(Vector3.up * rotationalSpeed * Time.deltaTime);
-        }
-
-        while (leftHandle.transform.rotation.y > 0) {
-            leftHandle.transform.Rotate(Vector3.up * GrabberSpeed * Time.deltaTime);
-            rightHanlde.transform.Rotate(Vector3.down * GrabberSpeed * Time.deltaTime);
-        }
-    }
-
 }

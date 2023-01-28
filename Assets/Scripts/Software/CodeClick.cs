@@ -6,6 +6,7 @@ public class CodeClick : MonoBehaviour
 {
     private SoftwareComponent sc;
     public string showText;
+    public string value;
 
     void Start() {
         sc = GetComponentInParent<SoftwareComponent>();

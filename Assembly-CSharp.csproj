@@ -92,9 +92,6 @@
      <Compile Include="Assets\NetworkStartup.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\Scripts\SceneSwapAndNetworkLoad.cs" />
-     <Compile Include="Assets\Scripts\Software\CodeClickInt.cs" />
-     <Compile Include="Assets\Scripts\Software\CodeClickOperator.cs" />
-     <Compile Include="Assets\Scripts\Software\CodeClickFunction.cs" />
      <Compile Include="Assets\Scripts\Software\CodeBlockSelect.cs" />
      <Compile Include="Assets\Scripts\Software\SoftwareComponent.cs" />
      <Compile Include="Assets\Scripts\Software\CodeClick.cs" />
