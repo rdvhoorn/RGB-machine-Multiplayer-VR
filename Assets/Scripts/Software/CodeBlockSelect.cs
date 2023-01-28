@@ -5,9 +5,7 @@ using TMPro;
 
 public class CodeBlockSelect : MonoBehaviour
 {
-    public GameObject CodeStuff;
-    public GameObject bgBlock;
-    public GameObject textObject;
+    private SoftwareComponent sc;
 
     bool selected = false;
     public Material BaseMaterial;
@@ -21,14 +19,15 @@ public class CodeBlockSelect : MonoBehaviour
     public GameObject[] AllowedButtonGroups;
 
     void Start() {
-        Renderer = bgBlock.GetComponent<Renderer>();
+        Renderer = GetComponent<Renderer>();
         Renderer.material = BaseMaterial;
 
-        text = textObject.GetComponent<TextMeshPro>();
+        sc = GetComponentInParent<SoftwareComponent>();
+        text = GetComponentInChildren<TextMeshPro>();
     }
 
-    void OnMouseDown() {
-        CodeStuff.GetComponent<SoftwareComponent>().newSelected(gameObject);
+    public void OnMouseDown() {
+        sc.newSelected(gameObject);
     }
 
     public void Select() {
