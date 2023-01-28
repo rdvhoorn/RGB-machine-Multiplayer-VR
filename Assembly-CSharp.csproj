@@ -99,6 +99,11 @@
      <Compile Include="Assets\Scripts\Software\SoftwareComponent.cs" />
      <Compile Include="Assets\Scripts\Software\CodeClick.cs" />
      <Compile Include="Assets\Scripts\Software\ButtonGroup.cs" />
+     <Compile Include="Assets\Scripts\Software\Grabber\TestButton.cs" />
+     <Compile Include="Assets\Scripts\Software\Grabber\MoveGrabber.cs" />
+     <Compile Include="Assets\Scripts\Software\BallSpawn.cs" />
+     <Compile Include="Assets\Scripts\Explanations\SpawnExplanation.cs" />
+     <Compile Include="Assets\Scripts\Explanations\CloseExplanationButtonScript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
