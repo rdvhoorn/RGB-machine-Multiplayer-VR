@@ -140,30 +140,6 @@ public class MoveGrabber : NetworkBehaviour
                 started = false;
             }
         }
-        // if (leftHandle.transform.rotation.y*90 > 16 && !GrabberOpen && !GrabberStatic) {
-        //     GrabberStatic = true;
-        // } else if (leftHandle.transform.rotation.y < 0 && GrabberOpen && !GrabberStatic) {
-        //     GrabberStatic = true;
-        // }
-
-        // if (!GrabberStatic) {
-        //     if (GrabberOpen) {
-        //         leftHandle.transform.Rotate(Vector3.down * GrabberSpeed * Time.deltaTime);
-        //         rightHanlde.transform.Rotate(Vector3.up * GrabberSpeed * Time.deltaTime);
-        //     } else {
-        //         leftHandle.transform.Rotate(Vector3.up * GrabberSpeed * Time.deltaTime);
-        //         rightHanlde.transform.Rotate(Vector3.down * GrabberSpeed * Time.deltaTime);
-        //     }
-        // }
-
-        // if (transform.position.y > 6) {
-        //     moving = false;
-        // }
-
-        // if (!moving) return; 
-
-        // transform.position += Vector3.up * upwardsSpeed * Time.deltaTime;
-        // transform.Rotate(Vector3.up * rotationalSpeed * Time.deltaTime);
     }
 
     [ServerRpc(RequireOwnership = false)]

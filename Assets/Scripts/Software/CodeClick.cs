@@ -11,7 +11,7 @@ public class CodeClick : MonoBehaviour
         sc = GetComponentInParent<SoftwareComponent>();
     }
 
-    void OnMouseDown() {
+    public void OnMouseDown() {
         sc.appendCodeToSelected(gameObject);
     }
 }
