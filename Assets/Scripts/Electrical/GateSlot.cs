@@ -5,8 +5,8 @@ using UnityEngine;
 public class GateSlot : MonoBehaviour
 {
 
-    public Color baseColor = new Color(102f/255, 119f/255, 97f/255, 1);
-    public Color selectedColor = new Color(84f/255, 94f/255, 86f/255, 1);
+    public Color baseColor = new Color(0, 0.4941176f, 0.654902f, 1);
+    public Color selectedColor = new Color(0.5019608f, 0.8078431f, 0.8431372f, 1);
     [Range(0, 4)]
     public int ID;
 

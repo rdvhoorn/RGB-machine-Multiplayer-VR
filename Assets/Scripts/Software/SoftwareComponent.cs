@@ -206,9 +206,24 @@ public class SoftwareComponent : NetworkBehaviour
         for (int c = 0; c < plausable_configs.Length; c++) {
             Dictionary<int, string> temp_configs = plausable_configs[c];
             bool current_correct = true;
+
+            int[] parameters = new int[2];
+            int parameters_parsed = 0;
             
             for (int i = 0; i < inputFieldScripts.Length; i++) {
                 bool isCorrect = isConfigSettingCorrect(inputFieldScripts[i], temp_configs[inputFieldScripts[i].id]);
+
+                if (inputFieldScripts[i].codeBlock != null) {
+                    string entered_value = inputFieldScripts[i].codeBlock.GetComponent<CodeClick>().value;
+                    if (entered_value.Length == 1) {
+                        int out_number = 0;
+                        bool canConvert = int.TryParse(entered_value, out out_number);
+                        if (canConvert && parameters_parsed < 2) {
+                            parameters[parameters_parsed] = out_number;
+                            parameters_parsed += 1;
+                        }
+                    }
+                }
 
                 if (!isCorrect) {
                     current_correct = false;
@@ -217,7 +232,7 @@ public class SoftwareComponent : NetworkBehaviour
             }
 
             if (current_correct) {
-                current_parameters = new int[2]{-1, -1};
+                current_parameters = parameters;
                 return SoftwareState.PLAUSIBLE;
             }
         }

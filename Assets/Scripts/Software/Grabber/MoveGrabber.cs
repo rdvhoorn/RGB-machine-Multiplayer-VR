@@ -14,8 +14,7 @@ public class MoveGrabber : NetworkBehaviour
 
     public GameObject leftHandle;
     public GameObject rightHanlde;
-
-
+    public GameObject PopupLocation;
 
 
     private Vector3 startPosition;
@@ -26,6 +25,7 @@ public class MoveGrabber : NetworkBehaviour
     private float GrabberSpeed = 5f;
     private int[] parameters;
     private int stage = 0;
+    private SpawnExplanation se;
 
     private SoftwareComponent softwareComponent;
 
@@ -37,6 +37,7 @@ public class MoveGrabber : NetworkBehaviour
         startRotation = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
         softwareComponent = software.GetComponent<SoftwareComponent>();
         parameters = new int[2]{3, 5};
+        se = GetComponent<SpawnExplanation>();
     }
 
     // Update is called once per frame
@@ -47,19 +48,26 @@ public class MoveGrabber : NetworkBehaviour
 
     // Start grabber movement
     public void StartGrabberMovement() {
+        ResetGrabberMovement();
+
         // started = true;
-        // TestServerRpc(true, new int[2]{2, 5});
+        // TestServerRpc(new int[2]{3, 6});
+
         SoftwareState state = softwareComponent.CalculateSoftwareState();
 
         if (state == SoftwareState.CORRECT || state == SoftwareState.PLAUSIBLE) {
             int[] parameters = softwareComponent.GetCurrentSoftwareParameters();
 
             TestServerRpc(parameters);
+        } else {
+            se.SpawnExplanationPopup(PopupLocation.transform.position, PopupLocation.transform.rotation, "Unfortunately " + 
+            "you did not write code that is executable by the computer. The reason is as follows: you suck.");
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
     void TestServerRpc(int[] param) {
+        ballSpawnLocation.GetComponent<BallSpawn>().DeleteBall();
         started = true;
         parameters = param;
 
@@ -111,7 +119,7 @@ public class MoveGrabber : NetworkBehaviour
         if (stage == 1) {
             Debug.Log(leftHandle.transform.localRotation.y);
 
-            if (leftHandle.transform.localRotation.y * 90 > 9) {
+            if (leftHandle.transform.localRotation.y * 90 > 12) {
                 ballSpawnLocation.GetComponent<BallSpawn>().SpawnBall();
                 Debug.Log(Time.realtimeSinceStartupAsDouble);
             }
@@ -143,10 +151,7 @@ public class MoveGrabber : NetworkBehaviour
                 started = false;
             }
         }
-    }
 
-    [ServerRpc(RequireOwnership = false)]
-    void CloseGrabberHandleServerRpc() {
-
+        ResetGrabberMovement();
     }
 }
