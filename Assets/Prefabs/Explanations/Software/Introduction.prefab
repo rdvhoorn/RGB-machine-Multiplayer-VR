@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7956158405345363581}
   - component: {fileID: 7956158405345363580}
   m_Layer: 5
-  m_Name: TestExplanation
+  m_Name: Introduction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7956158405345363579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.08, y: 1.57}
+  m_AnchoredPosition: {x: -0.08, y: 1.61}
   m_SizeDelta: {x: 6.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7956158406247490212
@@ -228,11 +228,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hi im robin and im going to explain you all about this game! These popups
-    can be closed by pressing 'close' in the bottom right cornor
+  m_text: "Welcome! Are you ready to get this piece of the Rube Goldberg Machine
+    to work? Let's get started!\n\nOn the left, you see a pole with a grabber attached
+    to it. You will see a red box and a light blue plateau. Your job is to program
+    the grabber to catch a ball from the red box and drop it on the light-blue plateau.
+    \n\nYou can program the grabber by filling in the script on your right hand side.
+    If you think you have programmed the script correctly, you can test the script
+    using the 'test' button. \n\nThe system will only work perfectly if you time
+    the arm's movement well. Good luck!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -256,8 +262,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.4
-  m_fontSizeBase: 0.4
+  m_fontSize: 0.2
+  m_fontSizeBase: 0.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

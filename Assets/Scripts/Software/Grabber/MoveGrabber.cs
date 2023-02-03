@@ -60,8 +60,7 @@ public class MoveGrabber : NetworkBehaviour
 
             TestServerRpc(parameters);
         } else {
-            se.SpawnExplanationPopup(PopupLocation.transform.position, PopupLocation.transform.rotation, "Unfortunately " + 
-            "you did not write code that is executable by the computer. The reason is as follows: you suck.");
+            se.SpawnExplanationPopup(PopupLocation.transform.position, PopupLocation.transform.rotation);
         }
     }
 
