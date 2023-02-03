@@ -286,10 +286,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputWires: []
   OutputWires: []
-  type: 2
+  type: 0
   selectable: 0
-  baseColor: {r: 0.4, g: 0.46666667, b: 0.38039216, a: 1}
-  selectedColor: {r: 0.32941177, g: 0.36862746, b: 0.3372549, a: 1}
+  baseColor: {r: 0, g: 0.4941176, b: 0.654902, a: 1}
+  selectedColor: {r: 0.5019608, g: 0.8078431, b: 0.8431372, a: 1}
 --- !u!114 &8641443616523228216
 MonoBehaviour:
   m_ObjectHideFlags: 0
