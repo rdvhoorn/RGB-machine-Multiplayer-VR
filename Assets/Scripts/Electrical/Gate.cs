@@ -14,7 +14,7 @@ public class Gate : MonoBehaviour
     public Color baseColor = new Color(0, 0.4941176f, 0.654902f, 1);
     public Color selectedColor = new Color(0.5019608f, 0.8078431f, 0.8431372f, 1);
 
-    private GateSlot gateSlot;
+    private GateSlot gateSlot = null;
     private Electrical electrical;
 
 
@@ -26,10 +26,11 @@ public class Gate : MonoBehaviour
 
     public void gate_update() {
         List<bool> inputs = new List<bool>();
+
         foreach (GameObject inputWire in InputWires) {
             inputs.Add(inputWire.GetComponent<Wire>().getState());
         }
-
+        
         bool output = true;
         if (type == GateTypes.AND) {
             output = AND(inputs);

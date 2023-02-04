@@ -6,6 +6,9 @@ public class Wire : MonoBehaviour
 {
     public Color onColor = Color.green;
     public Color offColor = Color.red;
+    public Color disabledColor = Color.gray;
+
+    public bool wire_is_enabled = true;
     
 
     private bool state = false;
@@ -28,14 +31,32 @@ public class Wire : MonoBehaviour
     }
 
     private void updateColor() {
-        if (state) {
+        if (wire_is_enabled == false) {
             foreach (Renderer r in meshRenderers) {
-                r.material.color = onColor;
+                r.material.color = disabledColor;
             }
         } else {
-            foreach (Renderer r in meshRenderers) {
-                r.material.color = offColor;
+            if (state) {
+                foreach (Renderer r in meshRenderers) {
+                    r.material.color = onColor;
+                }
+            } else {
+                foreach (Renderer r in meshRenderers) {
+                    r.material.color = offColor;
+                }
             }
         }
+    }
+
+    public void disableWire() {
+        wire_is_enabled = false;
+
+        updateColor();
+    }
+
+    public void enableWire() {
+        wire_is_enabled = true;
+
+        updateColor();
     }
 }

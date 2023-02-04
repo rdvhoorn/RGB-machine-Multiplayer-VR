@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GateTypes {AND, OR, XOR, NAND};
+public enum GateTypes {AND, OR, XOR, NAND, NONE};
 
 public class Electrical : MonoBehaviour
 {
@@ -34,15 +34,25 @@ public class Electrical : MonoBehaviour
         initialized = true;
     }
 
+    public void updateWires() {
+        foreach (GateSlot slot in allSlots) {
+            if (slot.inputWires[0].GetComponent<Wire>().wire_is_enabled && slot.inputWires[1].GetComponent<Wire>().wire_is_enabled && instantiatedGates[slot.ID] != null) {
+                slot.outputWires[0].GetComponent<Wire>().enableWire();
+            }
+        }
+    }
+
     public void update_gates() {
+        updateWires();
+
         foreach (Gate gate in standardGates) {
             gate.gate_update();
         }
 
         foreach (GameObject gateGameObject in instantiatedGates) {
-            if (gateGameObject == null) return;
-
-            gateGameObject.GetComponent<Gate>().gate_update();
+            if (gateGameObject != null) {
+                gateGameObject.GetComponent<Gate>().gate_update();
+            }
         }
     }
 

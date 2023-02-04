@@ -5414,6 +5414,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!1 &328394955
 GameObject:
   m_ObjectHideFlags: 0
@@ -10571,6 +10573,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!114 &698860128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12988,6 +12992,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 0
 --- !u!1 &808662769
 GameObject:
   m_ObjectHideFlags: 0
@@ -13167,6 +13173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!114 &811065434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16825,6 +16833,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2025225037511200104, guid: 854f731a4cb9f0e4ebd6fa144eedfc09,
         type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025225037511200104, guid: 854f731a4cb9f0e4ebd6fa144eedfc09,
+        type: 3}
       propertyPath: InputWires.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -16952,6 +16965,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 0
 --- !u!4 &1008352047
 Transform:
   m_ObjectHideFlags: 0
@@ -17224,6 +17239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!114 &1021526188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18700,6 +18717,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!114 &1095264586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20085,12 +20104,12 @@ PrefabInstance:
         type: 3}
       propertyPath: InputWires.Array.data[0]
       value: 
-      objectReference: {fileID: 1497249727}
+      objectReference: {fileID: 1095264583}
     - target: {fileID: 4781323648580908878, guid: 23973fd7c777f4c47ac340c300207b80,
         type: 3}
       propertyPath: InputWires.Array.data[1]
       value: 
-      objectReference: {fileID: 1378980522}
+      objectReference: {fileID: 811065431}
     - target: {fileID: 4781323648580908878, guid: 23973fd7c777f4c47ac340c300207b80,
         type: 3}
       propertyPath: OutputWires.Array.data[0]
@@ -23251,6 +23270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 0
 --- !u!1 &1381543470
 GameObject:
   m_ObjectHideFlags: 0
@@ -24762,6 +24783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!114 &1489341305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24921,6 +24944,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 0
 --- !u!1 &1508597986
 GameObject:
   m_ObjectHideFlags: 0
@@ -26010,6 +26035,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!114 &1552026256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26760,6 +26787,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 0
 --- !u!1 &1613242622
 GameObject:
   m_ObjectHideFlags: 0
@@ -27064,6 +27093,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!114 &1626178866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28020,6 +28051,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!4 &1669252837
 Transform:
   m_ObjectHideFlags: 0
@@ -28560,6 +28593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!114 &1676793318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30870,6 +30905,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 520f0fde7a026d84480bcea98e0925cc, type: 2}
     - target: {fileID: 3287242453264547704, guid: 29e797ce7edab5f4297410d5a88e12ca,
         type: 3}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287242453264547704, guid: 29e797ce7edab5f4297410d5a88e12ca,
+        type: 3}
       propertyPath: InputWires.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -30953,6 +30993,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 1
 --- !u!1 &1767837717
 GameObject:
   m_ObjectHideFlags: 0
@@ -32423,6 +32465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0, g: 1, b: 0, a: 1}
   offColor: {r: 1, g: 0, b: 0, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  wire_is_enabled: 0
 --- !u!1 &1823054803
 GameObject:
   m_ObjectHideFlags: 0
@@ -34241,6 +34285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Introduction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956158405345363583, guid: e816890a9a29616439c0974d006624c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7956158405345363590, guid: e816890a9a29616439c0974d006624c3,
         type: 3}
@@ -38166,6 +38215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022683768650434170, guid: 0b52e0e8c06d0c14ea1d1d08ad1b0abf,
+        type: 3}
+      propertyPath: type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6022683768650434170, guid: 0b52e0e8c06d0c14ea1d1d08ad1b0abf,
         type: 3}

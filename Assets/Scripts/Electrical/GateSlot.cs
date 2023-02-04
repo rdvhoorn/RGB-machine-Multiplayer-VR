@@ -54,7 +54,5 @@ public class GateSlot : MonoBehaviour
             // blockRenderer.material.SetColor("_Color", baseColor);
             blockRenderer.material.color = baseColor;
         }
-    }
-
-    
+    }   
 }
