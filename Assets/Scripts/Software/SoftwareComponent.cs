@@ -102,47 +102,47 @@ public class SoftwareComponent : NetworkBehaviour
     private Dictionary<int, string>[] plausable_configs = new Dictionary<int, string>[8] {
         new Dictionary<int, string>{
             {1, "get_arm_height"},
-            {21, "current_height"}, {22, "<=,<"}, {23, "1,2,3,4,5,6"},
+            {21, "current_height"}, {22, "<=,<"}, {23, "1,2,3,4,5,6,7,8,9"},
             {3, "rotate_arm_up"},
             {41, "current_height"}, {42, "="}, {43, "get_arm_height"},
 
-            {61, "current_height"}, {62, "<=,<"}, {63, "1,2,3,4,5,6"},
+            {61, "current_height"}, {62, "<=,<"}, {63, "1,2,3,4,5,6,7,8,9"},
             {7, "rotate_arm_up"},
             {81, "current_height"}, {82, "="}, {83, "get_arm_height"}
         },
         new Dictionary<int, string>{
             {1, null},
-            {21, "get_arm_height"}, {22, "<=,<"}, {23, "1,2,3,4,5,6"},
+            {21, "get_arm_height"}, {22, "<=,<"}, {23, "1,2,3,4,5,6,7,8,9"},
             {3, "rotate_arm_up"},
             {41, null}, {42, null}, {43, null},
 
-            {61, "get_arm_height"}, {62, "<=,<"}, {63, "1,2,3,4,5,6"},
+            {61, "get_arm_height"}, {62, "<=,<"}, {63, "1,2,3,4,5,6,7,8,9"},
             {7, "rotate_arm_up"},
             {81, null}, {82, null}, {83, null}
         },
         new Dictionary<int, string>{
             {1, "get_arm_height"},
-            {21, "current_height"}, {22, "=>,>"}, {23, "1,2,3,4,5,6"},
+            {21, "current_height"}, {22, "=>,>"}, {23, "1,2,3,4,5,6,7,8,9"},
             {3, "rotate_arm_up"},
             {41, "current_height"}, {42, "="}, {43, "get_arm_height"},
 
-            {61, "current_height"}, {62, "=>,>"}, {63, "1,2,3,4,5,6"},
+            {61, "current_height"}, {62, "=>,>"}, {63, "1,2,3,4,5,6,7,8,9"},
             {7, "rotate_arm_up"},
             {81, "current_height"}, {82, "="}, {83, "get_arm_height"}
         },
         new Dictionary<int, string>{
             {1, null},
-            {21, "1,2,3,4,5,6"}, {22, "=>,>"}, {23, "get_arm_height"},
+            {21, "1,2,3,4,5,6,7,8,9"}, {22, "=>,>"}, {23, "get_arm_height"},
             {3, "rotate_arm_up"},
             {41, null}, {42, null}, {43, null},
 
-            {61, "1,2,3,4,5,6"}, {62, "=>,>"}, {63, "get_arm_height"},
+            {61, "1,2,3,4,5,6,7,8,9"}, {62, "=>,>"}, {63, "get_arm_height"},
             {7, "rotate_arm_up"},
             {81, null}, {82, null}, {83, null}
         },
         new Dictionary<int, string>{
             {1, "get_arm_height"},
-            {21, "current_height"}, {22, "<=,<"}, {23, "1,2,3,4,5,6"},
+            {21, "current_height"}, {22, "<=,<"}, {23, "1,2,3,4,5,6,7,8,9"},
             {3, "rotate_arm_up"},
             {41, "current_height"}, {42, "="}, {43, "get_arm_height"},
 
@@ -152,7 +152,7 @@ public class SoftwareComponent : NetworkBehaviour
         },
         new Dictionary<int, string>{
             {1, null},
-            {21, "get_arm_height"}, {22, "<=,<"}, {23, "1,2,3,4,5,6"},
+            {21, "get_arm_height"}, {22, "<=,<"}, {23, "1,2,3,4,5,6,7,8,9"},
             {3, "rotate_arm_up"},
             {41, null}, {42, null}, {43, null},
 
@@ -162,7 +162,7 @@ public class SoftwareComponent : NetworkBehaviour
         },
         new Dictionary<int, string>{
             {1, "get_arm_height"},
-            {21, "1,2,3,4,5,6"}, {22, "=>,>"}, {23, "current_height"},
+            {21, "1,2,3,4,5,6,7,8,9"}, {22, "=>,>"}, {23, "current_height"},
             {3, "rotate_arm_up"},
             {41, "current_height"}, {42, "="}, {43, "get_arm_height"},
 
@@ -172,7 +172,7 @@ public class SoftwareComponent : NetworkBehaviour
         },
         new Dictionary<int, string>{
             {1, null},
-            {21, "1,2,3,4,5,6"}, {22, "=>,>"}, {23, "get_current_height"},
+            {21, "1,2,3,4,5,6,7,8,9"}, {22, "=>,>"}, {23, "get_current_height"},
             {3, "rotate_arm_up"},
             {41, null}, {42, null}, {43, null},
 
@@ -266,5 +266,97 @@ public class SoftwareComponent : NetworkBehaviour
         }
 
         return false;
+    }
+
+    public string getDebuggerText() {
+        CodeBlockSelect[] ordered = getInOrder();
+        if (ordered[0].codeBlock != null && "123456789".Contains(ordered[0].codeBlock.GetComponent<CodeClick>().value)) {
+            return "It seems like you made a tiny mistake in line 1! Instead of assigning a number to the height, try to obtain the current height through a different method.";
+        }
+
+        string emptyfieldstring = fieldsFilledInInvalidly(ordered);
+        if (!emptyfieldstring.Contains("good")) {
+            return emptyfieldstring;
+        }
+        
+        string invalidvariablestirng = invalidVariable(ordered);
+        if (!invalidvariablestirng.Contains("good")) {
+            return invalidvariablestirng;
+        }
+
+        return "Your code does not compile! However, the compiler does not understand exactly what you did wrong! Please have a look at your code to see if you can spot any mistakes. If you cannot spot any mistakes, ask for help.";
+    }
+
+    private CodeBlockSelect[] getInOrder() {
+        CodeBlockSelect[] code_blocks_in_order = new CodeBlockSelect[15];
+
+        Dictionary<int, int> mapping = new Dictionary<int, int>{
+            {1,0},
+            {21,1},
+            {22,2},
+            {23,3},
+            {3,4},
+            {41,5},
+            {42,6},
+            {43,7},
+            {61,8},
+            {62,9},
+            {63,10},
+            {7,11},
+            {81,12},
+            {82,13},
+            {83,14},
+        };
+
+        for (int i = 0; i < inputFieldScripts.Length; i++) {
+            code_blocks_in_order[mapping[inputFieldScripts[i].id]] = inputFieldScripts[i];
+        }
+
+        return code_blocks_in_order;
+    }
+
+    private string fieldsFilledInInvalidly(CodeBlockSelect[] ordered) {
+        if (ordered[1].codeBlock == null || ordered[2].codeBlock == null || ordered[3].codeBlock == null) {
+            return "Make sure that you use the first while loop appropriately. It seems that there is some code missing there!";
+        }
+
+        if (ordered[8].codeBlock == null || ordered[9].codeBlock == null || ordered[10].codeBlock == null) {
+            return "Make sure that you urse the second while loop appropriately. It seems that there is some code missing there!";
+        }
+
+        if (ordered[4].codeBlock == null || ordered[11].codeBlock == null) {
+            return "The first line within the contents of the while loops are for statements that make the grabber go up. Make sure you use them for that!";
+        }
+
+        if ((ordered[5].codeBlock == null || ordered[6].codeBlock == null || ordered[7].codeBlock == null) && (ordered[5].codeBlock != null || ordered[6].codeBlock != null || ordered[7].codeBlock != null)) {
+            return "The second line of the first while loop is only partially filled in. Hence your code is not compiling!";
+        }
+
+        if ((ordered[12].codeBlock == null || ordered[13].codeBlock == null || ordered[14].codeBlock == null) && (ordered[12].codeBlock != null || ordered[13].codeBlock != null || ordered[14].codeBlock != null)) {
+            return "The second line of the second while loop is only partially filled in. Hence your code is not compiling!";
+        }
+
+        return "good";
+    }
+
+    private string invalidVariable(CodeBlockSelect[] ordered) { 
+        if (ordered[5].codeBlock != null) {
+            if ("123456789".Contains(ordered[5].codeBlock.GetComponent<CodeClick>().value)) {
+                return "Syntax error in line 4: cannot assign value to an integer.";
+            } else if ("rotate_arm_upget_arm_height".Contains(ordered[5].codeBlock.GetComponent<CodeClick>().value)) {
+                return "Syntax error in line 4: cannot assign value to function.";
+            }
+        }
+
+        if (ordered[12].codeBlock != null) {
+            if ("123456789".Contains(ordered[12].codeBlock.GetComponent<CodeClick>().value)) {
+                return "Syntax error in line 8: cannot assign value to an integer.";
+            } else if ("rotate_arm_upget_arm_height".Contains(ordered[12].codeBlock.GetComponent<CodeClick>().value)) {
+                return "Syntax error in line 8: cannot assign value to function.";
+            }
+        }
+        
+
+        return "good";
     }
 }

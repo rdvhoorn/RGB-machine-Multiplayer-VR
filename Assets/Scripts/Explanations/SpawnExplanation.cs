@@ -22,4 +22,9 @@ public class SpawnExplanation : MonoBehaviour
     public void CloseOnRelease() {
         Destroy(instance);
     }
+
+    public void SpawnExplanationWithCustomText(Vector3 position, Quaternion rotation, string text) {
+        instance = Instantiate(explanationPrefab, position, rotation);
+        instance.GetComponentInChildren<TextMeshProUGUI>().text = text;
+    }
 }

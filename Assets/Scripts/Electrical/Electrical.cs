@@ -51,7 +51,7 @@ public class Electrical : MonoBehaviour
 
         foreach (GameObject gateGameObject in instantiatedGates) {
             if (gateGameObject != null) {
-                gateGameObject.GetComponent<Gate>().gate_update();
+                gateGameObject.GetComponentInChildren<Gate>().gate_update();
             }
         }
     }
@@ -91,7 +91,7 @@ public class Electrical : MonoBehaviour
 
         GameObject gateGameObject = Instantiate(GetPrefab(type), currentSelectedSlot.transform.position + new Vector3(0, 0, -0.3f), currentSelectedSlot.transform.rotation, gameObject.transform);
 
-        Gate gate = gateGameObject.GetComponent<Gate>();
+        Gate gate = gateGameObject.GetComponentInChildren<Gate>();
         gate.SetElectrical(gameObject.GetComponent<Electrical>());
         gate.selectable = true;
         gate.SetWires(currentSelectedSlot.inputWires, currentSelectedSlot.outputWires);
