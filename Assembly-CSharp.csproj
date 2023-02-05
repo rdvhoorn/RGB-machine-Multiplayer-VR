@@ -103,6 +103,8 @@
      <Compile Include="Assets\NetworkStartup.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\Scripts\SceneSwapAndNetworkLoad.cs" />
+     <Compile Include="Assets\Scripts\final machine\button.cs" />
+     <Compile Include="Assets\Scripts\final machine\FireworksExploder.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
