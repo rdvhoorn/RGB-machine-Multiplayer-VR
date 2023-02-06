@@ -771,6 +771,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78f887e3b939f14d9326d686f04f3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfPlayers: 2
+  sp1: {x: -2.678934, y: 0.1, z: -77.66}
+  sp2: {x: 1.3610649, y: 0.1, z: -72.79}
+  sp3: {x: 5.621065, y: 0.1, z: -77.66}
 --- !u!1 &5648869040747617478
 GameObject:
   m_ObjectHideFlags: 0

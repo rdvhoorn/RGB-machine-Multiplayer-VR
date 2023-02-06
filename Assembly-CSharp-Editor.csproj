@@ -805,11 +805,17 @@
     <Reference Include="Unity.Multiplayer.Tools.NetworkSolutionInterface">
         <HintPath>D:\Unity\projects\ASMLV4VR\Library\ScriptAssemblies\Unity.Multiplayer.Tools.NetworkSolutionInterface.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Editor">
+        <HintPath>D:\Unity\projects\ASMLV4VR\Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.007">
         <HintPath>D:\Unity\projects\ASMLV4VR\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.007.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.Editor">
         <HintPath>D:\Unity\projects\ASMLV4VR\Library\ScriptAssemblies\Unity.Multiplayer.Tools.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+        <HintPath>D:\Unity\projects\ASMLV4VR\Library\ScriptAssemblies\Unity.VisualEffectGraph.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Management.Editor">
         <HintPath>D:\Unity\projects\ASMLV4VR\Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>

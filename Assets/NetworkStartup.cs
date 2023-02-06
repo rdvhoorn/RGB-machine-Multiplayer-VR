@@ -9,7 +9,6 @@ public enum NetworkType {Server, Host, Client};
 
 public class NetworkStartup : MonoBehaviour
 {
-
     [SerializeField]
     private NetworkManager NetworkManager;
 
@@ -25,15 +24,6 @@ public class NetworkStartup : MonoBehaviour
         } else if (SceneSwapAndNetworkLoad.playerType == Type.Client) {
             NetworkManager.StartClient();
         }
-
-        // if (type == NetworkType.Server) {
-        //     NetworkManager.StartServer();
-        //     Debug.Log(GetLocalIPAddress());
-        // } else if (type == NetworkType.Host) {
-        //     NetworkManager.StartHost();
-        // } else if (type == NetworkType.Client) {
-        //     NetworkManager.StartClient();
-        // }
     }
 
     public string GetLocalIPAddress() {

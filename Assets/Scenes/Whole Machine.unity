@@ -856,6 +856,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireworks
       objectReference: {fileID: 0}
+    - target: {fileID: 6098946748617485668, guid: a6f172687ddd44a4b9383ca9e214b2c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098946748617485669, guid: a6f172687ddd44a4b9383ca9e214b2c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6098946748617485675, guid: a6f172687ddd44a4b9383ca9e214b2c5,
         type: 3}
       propertyPath: m_RootOrder
