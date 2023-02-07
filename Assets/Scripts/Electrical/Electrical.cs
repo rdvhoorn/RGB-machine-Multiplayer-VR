@@ -1,22 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public enum GateTypes {AND, OR, XOR, NAND, NONE};
+public enum GateTypes {AND, OR, XOR, NAND, NOT, NONE};
 
-public class Electrical : MonoBehaviour
+public class Electrical : NetworkBehaviour
 {
     private bool initialized = false;
     private Gate[] standardGates;
 
     private GateSlot currentSelectedSlot = null;
-    private GameObject[] instantiatedGates = new GameObject[5];
+    private GameObject[] instantiatedGates = new GameObject[6];
     private GateSlot[] allSlots;
 
     public GameObject AndGatePrefab;
     public GameObject OrGatePrefab;
     public GameObject XorGatePrefab;
     public GameObject NandGatePrefab;
+
+    public GameObject lastwire;
+    public GameObject finalExplanation;
+    public GameObject spawnPosition;
 
     void Start() {
         standardGates = GetComponentsInChildren<Gate>();
@@ -42,8 +47,14 @@ public class Electrical : MonoBehaviour
         }
 
         foreach (Gate gate in standardGates) {
-            if (gate.InputWires[0].GetComponent<Wire>().wire_is_enabled && gate.InputWires[1].GetComponent<Wire>().wire_is_enabled) {
-                gate.OutputWires[0].GetComponent<Wire>().enableWire();
+            if (gate.InputWires.Count == 1) {
+                if (gate.InputWires[0].GetComponent<Wire>().wire_is_enabled) {
+                    gate.OutputWires[0].GetComponent<Wire>().enableWire();
+                }
+            } else {
+                if (gate.InputWires[0].GetComponent<Wire>().wire_is_enabled && gate.InputWires[1].GetComponent<Wire>().wire_is_enabled) {
+                    gate.OutputWires[0].GetComponent<Wire>().enableWire();
+                }
             }
         }
     }
@@ -61,6 +72,10 @@ public class Electrical : MonoBehaviour
                     gateGameObject.GetComponentInChildren<Gate>().gate_update();
                 }
             }
+        }
+
+        if (lastwire.GetComponent<Wire>().getState() && lastwire.GetComponent<Wire>().wire_is_enabled) {
+            finalExplanation.transform.position = spawnPosition.transform.position;
         }
     }
 

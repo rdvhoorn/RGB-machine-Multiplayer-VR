@@ -28,6 +28,7 @@ public class MoveGrabber : NetworkBehaviour
     private SpawnExplanation se;
 
     private SoftwareComponent softwareComponent;
+    
 
 
     // Start is called before the first frame update
@@ -50,9 +51,6 @@ public class MoveGrabber : NetworkBehaviour
     public void StartGrabberMovement() {
         ResetGrabberMovement();
 
-        // started = true;
-        // TestServerRpc(new int[2]{3, 6});
-
         SoftwareState state = softwareComponent.CalculateSoftwareState();
 
         if (state == SoftwareState.CORRECT || state == SoftwareState.PLAUSIBLE) {
@@ -62,6 +60,7 @@ public class MoveGrabber : NetworkBehaviour
         } else {
             string explanation = softwareComponent.getDebuggerText();
             se.SpawnExplanationWithCustomText(PopupLocation.transform.position, PopupLocation.transform.rotation, explanation);
+            NetworkManager.Singleton.ConnectedClientsList[0].PlayerObject.GetComponent<NetworkPlayer>().LoadFinalScene();
         }
     }
 
@@ -153,5 +152,15 @@ public class MoveGrabber : NetworkBehaviour
         }
 
         ResetGrabberMovement();
+
+        if (parameters[0] == 3 && parameters[1] == 6) {
+            // GO TO FINAL MACHINE
+            goToNextServerRpc();
+        }
+    }
+
+    [ServerRpc]
+    void goToNextServerRpc() {
+        NetworkManager.Singleton.ConnectedClientsList[0].PlayerObject.GetComponent<NetworkPlayer>().LoadFinalScene();
     }
 }

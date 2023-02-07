@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.SceneManagement;
 
 public class NetworkPlayer : NetworkBehaviour
 {
@@ -92,5 +93,9 @@ public class NetworkPlayer : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void LogServerRpc(string message) {
         Debug.Log(message);
+    }
+
+    public void LoadFinalScene() {
+        SceneManager.LoadScene("Whole Machine");
     }
 }

@@ -40,6 +40,8 @@ public class Gate : MonoBehaviour
             output = XOR(inputs);
         } else if (type == GateTypes.NAND) {
             output = NAND(inputs);
+        } else if (type == GateTypes.NOT) {
+            output = NOT(inputs);
         }
 
         foreach(GameObject outputWire in OutputWires) {
@@ -75,6 +77,10 @@ public class Gate : MonoBehaviour
 
     private bool NAND(List<bool> inputs) {
         return !AND(inputs);
+    }
+
+    private bool NOT(List<bool> inputs) {
+        return !inputs[0];
     }
 
     public void SetWires(List<GameObject> i, List<GameObject> o) {
