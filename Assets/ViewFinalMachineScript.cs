@@ -5,6 +5,8 @@ using Unity.Netcode;
 
 public class ViewFinalMachineScript : NetworkBehaviour
 {
+    public int id;
+
     public void ButtonClick() {
         goToNextServerRpc();
         OnPressClose();
@@ -12,8 +14,7 @@ public class ViewFinalMachineScript : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     void goToNextServerRpc() {
-        Debug.Log("hey!");
-        NetworkManager.Singleton.ConnectedClientsList[0].PlayerObject.GetComponent<NetworkPlayer>().LoadFinalScene();
+        NetworkManager.Singleton.ConnectedClientsList[id].PlayerObject.GetComponent<NetworkPlayer>().LoadFinalScene();
     }
 
     public GameObject explanationCanvas;

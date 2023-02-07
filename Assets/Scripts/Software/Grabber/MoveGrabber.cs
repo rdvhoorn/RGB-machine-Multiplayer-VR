@@ -28,6 +28,7 @@ public class MoveGrabber : NetworkBehaviour
     private SpawnExplanation se;
 
     private SoftwareComponent softwareComponent;
+    public GameObject lastexplanation;
     
 
 
@@ -155,12 +156,8 @@ public class MoveGrabber : NetworkBehaviour
 
         if (parameters[0] == 3 && parameters[1] == 6) {
             // GO TO FINAL MACHINE
-            goToNextServerRpc();
+            lastexplanation.transform.position = PopupLocation.transform.position;
+            lastexplanation.transform.rotation = PopupLocation.transform.rotation;
         }
-    }
-
-    [ServerRpc]
-    void goToNextServerRpc() {
-        NetworkManager.Singleton.ConnectedClientsList[0].PlayerObject.GetComponent<NetworkPlayer>().LoadFinalScene();
     }
 }
