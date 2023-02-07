@@ -25,20 +25,20 @@ public class NetworkPlayer : NetworkBehaviour
     {
         DisableClientInput();
 
-        LogServerRpc(NetworkManager.Singleton.ConnectedClientsList.Count.ToString());
-
         if (IsOwner) {
             transform.position = sps[NetworkManager.Singleton.LocalClientId];
             
-            if (NetworkManager.Singleton.ConnectedClientsList.Count == numberConnectedClientsStart) {
-                LogServerRpc("StartGame!");
-                StartGameServerRpc();
-            }
+
+            StartGameServerRpc();
+            // if (NetworkManager.Singleton.ConnectedClientsList.Count == numberConnectedClientsStart) {
+            //     StartGameServerRpc();
+            // }
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void StartGameServerRpc() {
+        Debug.Log("StartGame!");
         StartGameClientRpc();
     }
 

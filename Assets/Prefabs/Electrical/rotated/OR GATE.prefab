@@ -194,7 +194,7 @@ MonoBehaviour:
   InputWires: []
   OutputWires: []
   type: 1
-  selectable: 0
+  selectable: 1
   baseColor: {r: 0, g: 0.4941176, b: 0.654902, a: 1}
   selectedColor: {r: 0.5019608, g: 0.8078431, b: 0.8431372, a: 1}
 --- !u!1 &998954461366590309

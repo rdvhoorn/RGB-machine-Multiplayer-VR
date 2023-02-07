@@ -64,13 +64,13 @@ public class Gate : MonoBehaviour
     }
 
     private bool XOR(List<bool> inputs) {
-        if (inputs[0] && inputs[1]) {
+        if (!inputs[0] && !inputs[1]) {
             return false;
-        } else if (inputs[0] || inputs[1]) {
+        } else if (inputs[0] && inputs[1]) {
+            return false;
+        } else {
             return true;
-        } 
-
-        return false;
+        }
     }
 
     private bool NAND(List<bool> inputs) {

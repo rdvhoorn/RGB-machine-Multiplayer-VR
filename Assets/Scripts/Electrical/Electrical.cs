@@ -40,18 +40,26 @@ public class Electrical : MonoBehaviour
                 slot.outputWires[0].GetComponent<Wire>().enableWire();
             }
         }
+
+        foreach (Gate gate in standardGates) {
+            if (gate.InputWires[0].GetComponent<Wire>().wire_is_enabled && gate.InputWires[1].GetComponent<Wire>().wire_is_enabled) {
+                gate.OutputWires[0].GetComponent<Wire>().enableWire();
+            }
+        }
     }
 
     public void update_gates() {
         updateWires();
 
-        foreach (Gate gate in standardGates) {
-            gate.gate_update();
-        }
+        for (int i = 0; i < 3; i++) {
+            foreach (Gate gate in standardGates) {
+                gate.gate_update();
+            }
 
-        foreach (GameObject gateGameObject in instantiatedGates) {
-            if (gateGameObject != null) {
-                gateGameObject.GetComponentInChildren<Gate>().gate_update();
+            foreach (GameObject gateGameObject in instantiatedGates) {
+                if (gateGameObject != null) {
+                    gateGameObject.GetComponentInChildren<Gate>().gate_update();
+                }
             }
         }
     }
@@ -67,7 +75,7 @@ public class Electrical : MonoBehaviour
         for (int i = 0; i < allSlots.Length; i++) {
             allSlots[i].deactivate();
             if (instantiatedGates[i] != null) {
-                instantiatedGates[i].GetComponent<Gate>().deactivate();
+                instantiatedGates[i].GetComponentInChildren<Gate>().deactivate();
             }
         }
 
@@ -75,7 +83,7 @@ public class Electrical : MonoBehaviour
             clickedSlot.activate();
             currentSelectedSlot = clickedSlot;
             if (instantiatedGates[clickedSlot.ID] != null) {
-                instantiatedGates[clickedSlot.ID].GetComponent<Gate>().activate();
+                instantiatedGates[clickedSlot.ID].GetComponentInChildren<Gate>().activate();
             }
 
         } else {

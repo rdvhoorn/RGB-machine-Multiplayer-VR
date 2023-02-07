@@ -55,8 +55,9 @@ public class Wire : MonoBehaviour
     }
 
     public void enableWire() {
-        wire_is_enabled = true;
-
-        updateColor();
+        if (!wire_is_enabled) {
+            wire_is_enabled = true;
+            updateColor();
+        }
     }
 }

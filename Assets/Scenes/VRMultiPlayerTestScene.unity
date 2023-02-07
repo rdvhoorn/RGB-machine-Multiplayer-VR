@@ -39637,6 +39637,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4608208917634560643, guid: f02053e58477ba64ca2ef29f48d2180b,
         type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608208917634560643, guid: f02053e58477ba64ca2ef29f48d2180b,
+        type: 3}
       propertyPath: InputWires.Array.size
       value: 2
       objectReference: {fileID: 0}
