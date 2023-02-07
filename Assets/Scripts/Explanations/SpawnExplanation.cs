@@ -24,6 +24,10 @@ public class SpawnExplanation : MonoBehaviour
     }
 
     public void SpawnExplanationWithCustomText(Vector3 position, Quaternion rotation, string text) {
+        if (instance != null) {
+            CloseOnRelease();
+        }
+
         instance = Instantiate(explanationPrefab, position, rotation);
         instance.GetComponentInChildren<TextMeshProUGUI>().text = text;
     }

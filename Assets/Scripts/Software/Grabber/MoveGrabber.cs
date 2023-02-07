@@ -60,7 +60,8 @@ public class MoveGrabber : NetworkBehaviour
 
             TestServerRpc(parameters);
         } else {
-            se.SpawnExplanationPopup(PopupLocation.transform.position, PopupLocation.transform.rotation);
+            string explanation = softwareComponent.getDebuggerText();
+            se.SpawnExplanationWithCustomText(PopupLocation.transform.position, PopupLocation.transform.rotation, explanation);
         }
     }
 
