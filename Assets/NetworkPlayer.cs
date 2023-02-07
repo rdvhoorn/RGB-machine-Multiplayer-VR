@@ -20,7 +20,7 @@ public class NetworkPlayer : NetworkBehaviour
         new Vector3(0f, 0f, 0f),
     };
 
-    private int numberConnectedClientsStart = 1;
+    private int numberConnectedClientsStart = 2;
 
     public override void OnNetworkSpawn()
     {
@@ -30,12 +30,24 @@ public class NetworkPlayer : NetworkBehaviour
             transform.position = sps[NetworkManager.Singleton.LocalClientId];
             
 
-            StartGameServerRpc();
+            // StartGameServerRpc();
             // if (NetworkManager.Singleton.ConnectedClientsList.Count == numberConnectedClientsStart) {
             //     StartGameServerRpc();
             // }
+            CheckGameStartServerRpc();
+
         }
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void CheckGameStartServerRpc() {
+        Debug.Log(NetworkManager.Singleton.ConnectedClientsList.Count);
+        if (NetworkManager.Singleton.ConnectedClientsList.Count == numberConnectedClientsStart) {
+            StartGameClientRpc();
+        }
+    }
+
+    
 
     [ServerRpc(RequireOwnership = false)]
     private void StartGameServerRpc() {
