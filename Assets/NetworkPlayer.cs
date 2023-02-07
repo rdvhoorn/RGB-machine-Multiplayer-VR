@@ -7,24 +7,44 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class NetworkPlayer : NetworkBehaviour
 {
-    public Vector3[] sps = new Vector3[3]{
+    private Vector3[] sps = new Vector3[3]{
         new Vector3(-2.6789341f, 0.1f, -77.6600037f),
         new Vector3(1.36106491f, 0.1f, -72.7900009f),
         new Vector3(5.62106514f, 0.1f, -77.6600037f)
     };
 
+    private Vector3[] sps_start = new Vector3[3]{
+        new Vector3(0f, 0f, 0f),
+        new Vector3(0f, 0f, 0f),
+        new Vector3(0f, 0f, 0f),
+    };
+
+    private int numberConnectedClientsStart = 1;
+
     public override void OnNetworkSpawn()
     {
         DisableClientInput();
 
+        LogServerRpc(NetworkManager.Singleton.ConnectedClientsList.Count.ToString());
+
         if (IsOwner) {
             transform.position = sps[NetworkManager.Singleton.LocalClientId];
+            
+            if (NetworkManager.Singleton.ConnectedClientsList.Count == numberConnectedClientsStart) {
+                LogServerRpc("StartGame!");
+                StartGameServerRpc();
+            }
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
-    void goToPositionServerRpc(Vector3 newPos) {
-        transform.position = newPos;
+    private void StartGameServerRpc() {
+        StartGameClientRpc();
+    }
+
+    [ClientRpc]
+    private void StartGameClientRpc() {
+        transform.position = sps_start[NetworkManager.Singleton.LocalClientId];
     }
 
     public void DisableClientInput() {
@@ -69,7 +89,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void LogServerRpc(string message) {
         Debug.Log(message);
     }
