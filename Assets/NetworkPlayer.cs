@@ -20,7 +20,7 @@ public class NetworkPlayer : NetworkBehaviour
         new Vector3(0f, 0f, 0f),
     };
 
-    private int numberConnectedClientsStart = 2;
+    private int numberConnectedClientsStart = 1;
 
     public override void OnNetworkSpawn()
     {
