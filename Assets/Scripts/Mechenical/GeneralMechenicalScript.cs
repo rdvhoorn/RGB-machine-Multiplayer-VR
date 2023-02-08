@@ -13,6 +13,8 @@ public class GeneralMechenicalScript : MonoBehaviour
     public GameObject ballPrefab;
     public GameObject ballSpawnPosition;
     private GameObject ballInstance;
+    public GameObject finalInstallationPrefab;
+    private GameObject finalInstallationInstance = null;
 
 
     public float rotationSpeed;
@@ -46,6 +48,8 @@ public class GeneralMechenicalScript : MonoBehaviour
             float ratio = wheels[i].GetComponent<wheel>().ratio;
             current_speed = ratio * current_speed;
         }
+
+        rotationSpeeds.Add(current_speed);
     }
 
     void Update() {
@@ -53,7 +57,7 @@ public class GeneralMechenicalScript : MonoBehaviour
 
         startingBin.transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
 
-        if (startingBin.transform.eulerAngles.z > 300) {
+        if (startingBin.transform.eulerAngles.z < 22.5) {
             startRotation = false;
         }
 
@@ -61,9 +65,17 @@ public class GeneralMechenicalScript : MonoBehaviour
             bool rotation = i%2==1;
             wheels[i].GetComponent<wheel>().rotateWheel(rotationSpeeds[i], rotation);
         }
+
+        if (finalInstallationInstance != null) {
+            finalInstallationInstance.GetComponent<finalinstallation>().Rotate(rotationSpeeds[wheels.Count]);
+        }
     }
 
     public void addGear(geartypes type) {
+        if (wheels.Count >= 5) return;
+
+        if (startRotation) return;
+
         int index = -1;
 
         if (type == geartypes.oneone) {
@@ -79,13 +91,24 @@ public class GeneralMechenicalScript : MonoBehaviour
         GameObject newGear = Instantiate(prefabs[index], nextSpawnPosition, Quaternion.identity);
         wheels.Add(newGear);
 
+        
         updateNextSpawnPosition();
+        
+
+        if (wheels.Count == 5) {
+            finalInstallationInstance = Instantiate(finalInstallationPrefab, nextSpawnPosition, Quaternion.identity);
+        }
     }
 
     private void updateNextSpawnPosition() {
         int ratio = wheels[wheels.Count-1].GetComponent<wheel>().ratio;
 
-        nextSpawnPosition.z -= 0.2f;
+        if (wheels.Count < 5) {
+            nextSpawnPosition.z -= 0.2f;
+        } else {
+            nextSpawnPosition.z += 0.14f;
+        }
+
         nextSpawnPosition.x -= (1f + (ratio-1)*0.5f);
     }
 
@@ -107,5 +130,10 @@ public class GeneralMechenicalScript : MonoBehaviour
         nextSpawnPosition = wheels[0].transform.position;
         nextSpawnPosition.x -= 1;
         nextSpawnPosition.z -= 0.2f;
+
+        Destroy(ballInstance);
+        ballInstance = null;
+        Destroy(finalInstallationInstance);
+        finalInstallationInstance = null;
     }
 }
