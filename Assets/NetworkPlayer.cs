@@ -47,10 +47,8 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    
-
     [ServerRpc(RequireOwnership = false)]
-    private void StartGameServerRpc() {
+    public void StartGameServerRpc() {
         Debug.Log("StartGame!");
         StartGameClientRpc();
     }
@@ -109,5 +107,9 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void LoadFinalScene() {
         SceneManager.LoadScene("Whole Machine");
+    }
+
+    public void RestartGame() {
+        SceneManager.LoadScene("VRTestScene");
     }
 }
