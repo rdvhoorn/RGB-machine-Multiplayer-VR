@@ -24,6 +24,9 @@ public class GeneralMechenicalScript : MonoBehaviour
 
     private Vector3 nextSpawnPosition;
 
+    public GameObject finalPopupGo;
+    public GameObject finalPopup;
+
 
     void Start() {
         nextSpawnPosition = wheels[0].transform.position;
@@ -57,8 +60,12 @@ public class GeneralMechenicalScript : MonoBehaviour
 
         startingBin.transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
 
-        if (startingBin.transform.eulerAngles.z < 22.5) {
+        if (startingBin.transform.eulerAngles.z < 25) {
             startRotation = false;
+
+            if (rotationSpeeds[wheels.Count] == 720) {
+                finalPopup.transform.position = finalPopupGo.transform.position;
+            }
         }
 
         for (int i = 0; i < wheels.Count; i++) {

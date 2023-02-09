@@ -55,7 +55,7 @@ public class MoveGrabber : NetworkBehaviour
         SoftwareState state = softwareComponent.CalculateSoftwareState();
 
         if (state == SoftwareState.CORRECT || state == SoftwareState.PLAUSIBLE) {
-            int[] parameters = softwareComponent.GetCurrentSoftwareParameters();
+            parameters = softwareComponent.GetCurrentSoftwareParameters();
 
             TestServerRpc(parameters);
         } else {
@@ -82,6 +82,16 @@ public class MoveGrabber : NetworkBehaviour
     // Reset Grabber
     public void ResetGrabberMovement() {
         ResetGrabberMovementServerRpc();
+        spawnFinalExplanationClientRpc();
+    }
+
+    [ClientRpc]
+    private void spawnFinalExplanationClientRpc() {
+        if (parameters[0] == 3 && parameters[1] == 6) {
+            // GO TO FINAL MACHINE
+            lastexplanation.transform.position = PopupLocation.transform.position;
+            lastexplanation.transform.rotation = PopupLocation.transform.rotation;
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -117,11 +127,8 @@ public class MoveGrabber : NetworkBehaviour
             }
 
         if (stage == 1) {
-            Debug.Log(leftHandle.transform.localRotation.y);
-
             if (leftHandle.transform.localRotation.y * 90 > 12) {
                 ballSpawnLocation.GetComponent<BallSpawn>().SpawnBall();
-                Debug.Log(Time.realtimeSinceStartupAsDouble);
             }
             if (leftHandle.transform.localRotation.y * 90 < 16) {
                 leftHandle.transform.Rotate(Vector3.up * GrabberSpeed * Time.deltaTime);
@@ -154,10 +161,6 @@ public class MoveGrabber : NetworkBehaviour
 
         ResetGrabberMovement();
 
-        if (parameters[0] == 3 && parameters[1] == 6) {
-            // GO TO FINAL MACHINE
-            lastexplanation.transform.position = PopupLocation.transform.position;
-            lastexplanation.transform.rotation = PopupLocation.transform.rotation;
-        }
+        
     }
 }

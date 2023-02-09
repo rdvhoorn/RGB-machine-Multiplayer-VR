@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7956158405345363581}
   - component: {fileID: 7956158405345363580}
   m_Layer: 5
-  m_Name: Introduction
+  m_Name: final
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.34, y: 3.48}
-  m_SizeDelta: {x: 7, y: 2.5}
+  m_SizeDelta: {x: 7, y: 3.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7956158405345363577
 Canvas:
@@ -197,7 +197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.08, y: 1.17}
+  m_AnchoredPosition: {x: -0.08, y: 1.61}
   m_SizeDelta: {x: 6.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7956158406247490212
@@ -228,12 +228,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Welcome! Are you ready to get this piece of the Rube Goldberg Machine
-    to work? Let's get started!\n\nIn front of you is a panel full of electrical
-    wires. These wires are either not enabled (grey), off (red) or on (green). Using
-    electrical gates, you must make sure that the wire on the right turns green.
-    So what are electrical gates? Click and hold the question mark buttons on the
-    selection panel (right) to get an explanation. \n\nGood luck! "
+  m_text: Well done!!! You have succesfully solved the problem and fixed your part
+    of the machine. Click the button to view the full machine working!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -260,8 +256,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.2
-  m_fontSizeBase: 0.2
+  m_fontSize: 0.4
+  m_fontSizeBase: 0.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -368,7 +364,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Close
+  m_text: See final Machine
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -450,6 +446,8 @@ GameObject:
   - component: {fileID: 7956158406677093656}
   - component: {fileID: 7956158406677093659}
   - component: {fileID: 7956158406677093658}
+  - component: {fileID: 6856421241044496179}
+  - component: {fileID: 790600375767672668}
   m_Layer: 5
   m_Name: Close button
   m_TagString: Untagged
@@ -466,7 +464,7 @@ RectTransform:
   m_GameObject: {fileID: 7956158406677093660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7956158406473212327}
@@ -475,8 +473,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.48, y: -1}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0.18, y: -1.32}
+  m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7956158406677093657
 CanvasRenderer:
@@ -560,9 +558,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7956158406677093658}
-        m_TargetAssemblyTypeName: CloseExplanationButtonScript, Assembly-CSharp
-        m_MethodName: OnPressClose
+      - m_Target: {fileID: 6856421241044496179}
+        m_TargetAssemblyTypeName: ViewFinalMachineScript, Assembly-CSharp
+        m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -585,3 +583,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explanationCanvas: {fileID: 7956158405345363583}
+--- !u!114 &6856421241044496179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956158406677093660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b73527d2e7f7c42a628e379b90cab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  explanationCanvas: {fileID: 7956158405345363583}
+--- !u!114 &790600375767672668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956158406677093660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1

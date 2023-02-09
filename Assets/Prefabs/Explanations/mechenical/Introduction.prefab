@@ -197,7 +197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.08, y: 1.17}
+  m_AnchoredPosition: {x: -0.08, y: 1.18}
   m_SizeDelta: {x: 6.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7956158406247490212
@@ -229,11 +229,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Welcome! Are you ready to get this piece of the Rube Goldberg Machine
-    to work? Let's get started!\n\nIn front of you is a panel full of electrical
-    wires. These wires are either not enabled (grey), off (red) or on (green). Using
-    electrical gates, you must make sure that the wire on the right turns green.
-    So what are electrical gates? Click and hold the question mark buttons on the
-    selection panel (right) to get an explanation. \n\nGood luck! "
+    to work? Let's get started!\n\nIn front of you, you see a light blue bin. When
+    you press the start button, a ball will fall down on this bin which make the
+    bin rotate around its connection point. This connection point is connected to
+    a wheel. You can click on the four miniature wheels in front of you to increase
+    the 'gear ratio'. When you have placed four wheels, a final component will appear.
+    \n\nTest it out, I trust you can figure out what you must do. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -475,7 +476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.48, y: -1}
+  m_AnchoredPosition: {x: 2.48, y: -0.97}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7956158406677093657

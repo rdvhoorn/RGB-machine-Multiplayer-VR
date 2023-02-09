@@ -15,9 +15,9 @@ public class NetworkPlayer : NetworkBehaviour
     };
 
     private Vector3[] sps_start = new Vector3[3]{
-        new Vector3(0f, 0f, 0f),
-        new Vector3(0f, 0f, 0f),
-        new Vector3(0f, 0f, 0f),
+        new Vector3(-45,0,10),
+        new Vector3(-45,0,10),
+        new Vector3(-45,0,10),
     };
 
     private int numberConnectedClientsStart = 1;
