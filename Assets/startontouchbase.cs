@@ -19,4 +19,11 @@ public class startontouchbase : MonoBehaviour
         started = true;
         fm.StartMachine();
     }
+
+    public void click() {
+        if (started) return;
+
+        started = true;
+        fm.StartMachine();
+    }
 }

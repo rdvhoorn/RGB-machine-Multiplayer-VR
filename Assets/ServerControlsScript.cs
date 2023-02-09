@@ -24,8 +24,9 @@ public class ServerControlsScript : NetworkBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
-            foreach (ulong playerid in NetworkManager.Singleton.ConnectedClientsIds) {
-                NetworkManager.Singleton.DisconnectClient(playerid);
+            int count = NetworkManager.Singleton.ConnectedClientsIds.Count;
+            for (int i = 0; i < count; i++) {
+                NetworkManager.Singleton.DisconnectClient(NetworkManager.Singleton.ConnectedClientsIds[i]);
             }
 
             NetworkManager.Singleton.Shutdown();
