@@ -24,9 +24,12 @@ public class ServerControlsScript : NetworkBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
-            foreach (NetworkClient player in NetworkManager.Singleton.ConnectedClientsList) {
-                player.PlayerObject.GetComponent<NetworkPlayer>().RestartGame();
+            foreach (ulong playerid in NetworkManager.Singleton.ConnectedClientsIds) {
+                NetworkManager.Singleton.DisconnectClient(playerid);
             }
+
+            NetworkManager.Singleton.Shutdown();
+            UnityEngine.SceneManagement.SceneManager.LoadScene("VRTestScene");
         }
     }
 }

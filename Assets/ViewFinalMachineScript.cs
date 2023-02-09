@@ -8,13 +8,12 @@ public class ViewFinalMachineScript : NetworkBehaviour
     public int id;
 
     public void ButtonClick() {
-        goToNextServerRpc();
+        goToNext();
         OnPressClose();
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    void goToNextServerRpc() {
-        NetworkManager.Singleton.ConnectedClientsList[id].PlayerObject.GetComponent<NetworkPlayer>().LoadFinalScene();
+    void goToNext() {
+        NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<NetworkPlayer>().LoadFinalScene();
     }
 
     public GameObject explanationCanvas;

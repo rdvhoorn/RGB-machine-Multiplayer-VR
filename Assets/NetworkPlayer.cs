@@ -15,15 +15,16 @@ public class NetworkPlayer : NetworkBehaviour
     };
 
     private Vector3[] sps_start = new Vector3[3]{
-        new Vector3(-45,0,10),
-        new Vector3(-45,0,10),
-        new Vector3(-45,0,10),
+        
+        new Vector3(-26.2700005f,-0.0396533012f,16.8500004f), // electrical,
+        new Vector3(-62.2299995f,-0.0396533012f,19.9300003f), // software
+        new Vector3(-40.6399994f,-0.0396533012f,-0.389999866f), // mech
     };
 
     private Vector3[] finalLocations = new Vector3[3]{
-        new Vector3(230.74527f,318,-311.751129f),
         new Vector3(230.74527f,510,-311.751129f),
         new Vector3(230.74527f,694,-311.751129f),
+        new Vector3(230.74527f,318,-311.751129f),
     };
 
     private int numberConnectedClientsStart = 1;
@@ -36,8 +37,6 @@ public class NetworkPlayer : NetworkBehaviour
             transform.position = sps[NetworkManager.Singleton.LocalClientId];
             
             CheckGameStartServerRpc();
-
-            LoadFinalScene();
         }
     }
 
