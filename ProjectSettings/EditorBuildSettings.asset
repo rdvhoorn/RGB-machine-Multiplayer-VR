@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VRMultiPlayerTestScene.unity
     guid: 77a9b618fc294a1469518ba303cc9771
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Whole Machine.unity
     guid: d1cef382c59c8c342a8e8b8bab7217ea
   m_configObjects:

@@ -466,6 +466,11 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3358206900
       objectReference: {fileID: 0}
+    - target: {fileID: 2206765145138679055, guid: 0130c378f5235484cbe17bde0fe748b8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.053
+      objectReference: {fileID: 0}
     - target: {fileID: 2206765145734633754, guid: 0130c378f5235484cbe17bde0fe748b8,
         type: 3}
       propertyPath: m_Name
@@ -524,6 +529,11 @@ PrefabInstance:
     - target: {fileID: 2206765145734633756, guid: 0130c378f5235484cbe17bde0fe748b8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127294044768733289, guid: 0130c378f5235484cbe17bde0fe748b8,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

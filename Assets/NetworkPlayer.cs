@@ -20,6 +20,12 @@ public class NetworkPlayer : NetworkBehaviour
         new Vector3(-45,0,10),
     };
 
+    private Vector3[] finalLocations = new Vector3[3]{
+        new Vector3(230.74527f,318,-311.751129f),
+        new Vector3(230.74527f,510,-311.751129f),
+        new Vector3(230.74527f,694,-311.751129f),
+    };
+
     private int numberConnectedClientsStart = 1;
 
     public override void OnNetworkSpawn()
@@ -29,13 +35,9 @@ public class NetworkPlayer : NetworkBehaviour
         if (IsOwner) {
             transform.position = sps[NetworkManager.Singleton.LocalClientId];
             
-
-            // StartGameServerRpc();
-            // if (NetworkManager.Singleton.ConnectedClientsList.Count == numberConnectedClientsStart) {
-            //     StartGameServerRpc();
-            // }
             CheckGameStartServerRpc();
 
+            LoadFinalScene();
         }
     }
 
@@ -106,7 +108,19 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     public void LoadFinalScene() {
-        SceneManager.LoadScene("Whole Machine");
+        TransportfinalsceneServerRpc(NetworkManager.Singleton.LocalClientId);
+
+        GetComponent<NetworkMoveProvider>().enableInputActions = false;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void TransportfinalsceneServerRpc(ulong id) {
+        TransportfinalsceneClientRpc(new ClientRpcParams { Send = new ClientRpcSendParams { TargetClientIds = new List<ulong>() { id }}});
+    }
+
+    [ClientRpc]
+    private void TransportfinalsceneClientRpc(ClientRpcParams crp) {
+        transform.position = finalLocations[NetworkManager.Singleton.LocalClientId];
     }
 
     public void RestartGame() {

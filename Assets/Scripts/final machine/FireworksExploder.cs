@@ -13,13 +13,5 @@ public class FireworksExploder : MonoBehaviour
 
     void OnCollisionEnter(Collision other) {
         fireworks.SetActive(true);
-
-        StartCoroutine(switchToFinalScene());
-    }
-
-    IEnumerator switchToFinalScene() {
-        yield return new WaitForSeconds(15);
-
-        SceneManager.LoadScene("VRTestScene");
     }
 }

@@ -31,10 +31,17 @@ public class Grabber : MonoBehaviour
         parameters = new int[2]{3, 6};
     }
 
+    private bool started = false;
+
     // Update is called once per frame
     void Update()
     {
+        if (!started) return;
         UpdateGrabberServerRpc();
+    }
+
+    public void StartGrabber() {
+        started = true;
     }
 
  
@@ -52,7 +59,7 @@ public class Grabber : MonoBehaviour
         }
 
         if (stage == 0)
-            if (transform.position.y < parameters[0]) {
+            if (transform.localPosition.y < parameters[0]) {
                 transform.position += Vector3.up * upwardsSpeed * Time.deltaTime;
                 transform.Rotate(Vector3.up * rotationalSpeed * Time.deltaTime);   
                 return;  
@@ -71,7 +78,7 @@ public class Grabber : MonoBehaviour
         }
 
         if (stage == 2) {
-            if (transform.position.y < parameters[1]) {
+            if (transform.localPosition.y < parameters[1]) {
                 transform.position += Vector3.up * upwardsSpeed * Time.deltaTime;
                 transform.Rotate(Vector3.up * rotationalSpeed * Time.deltaTime);
                 return;
