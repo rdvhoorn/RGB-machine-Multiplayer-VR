@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
-public class BallSpawn : NetworkBehaviour
+public class BallSpawn : MonoBehaviour
 {
     public GameObject ballPrefab;
     private GameObject ballInstance = null;
@@ -11,7 +10,6 @@ public class BallSpawn : NetworkBehaviour
     public void SpawnBall() {
         if (ballInstance == null) {
             ballInstance = Instantiate(ballPrefab, transform.position, transform.rotation, transform);
-            ballInstance.GetComponent<NetworkObject>().Spawn();
         }
     }
 

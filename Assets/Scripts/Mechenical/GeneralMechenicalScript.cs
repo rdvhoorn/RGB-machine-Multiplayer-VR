@@ -120,10 +120,14 @@ public class GeneralMechenicalScript : MonoBehaviour
     }
 
     public void StartTesting() {
+        if (ballInstance != null) return;
+ 
         ballInstance = Instantiate(ballPrefab, ballSpawnPosition.transform.position, ballSpawnPosition.transform.rotation);
     }
 
     public void ResetAll() {
+        if (startRotation == true) return; 
+
         List<GameObject> newWheels = new List<GameObject>();
         newWheels.Add(wheels[0]);
 

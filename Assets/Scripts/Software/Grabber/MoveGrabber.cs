@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
 
-public class MoveGrabber : NetworkBehaviour
+public class MoveGrabber : MonoBehaviour
 {
 
     public float upwardsSpeed = 0.2f;
@@ -20,8 +19,6 @@ public class MoveGrabber : NetworkBehaviour
     private Vector3 startPosition;
     private Quaternion startRotation;
     private bool started = false;
-    private bool GrabberOpen = true;
-    private bool GrabberStatic = true;
     private float GrabberSpeed = 5f;
     private int[] parameters;
     private int stage = 0;
@@ -45,7 +42,7 @@ public class MoveGrabber : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateGrabberServerRpc();
+        UpdateGrabber();
     }
 
     // Start grabber movement
@@ -57,36 +54,32 @@ public class MoveGrabber : NetworkBehaviour
         if (state == SoftwareState.CORRECT || state == SoftwareState.PLAUSIBLE) {
             parameters = softwareComponent.GetCurrentSoftwareParameters();
 
-            TestServerRpc(parameters);
+            Test(parameters);
         } else {
             string explanation = softwareComponent.getDebuggerText();
             se.SpawnExplanationWithCustomText(PopupLocation.transform.position, PopupLocation.transform.rotation, explanation);
-            NetworkManager.Singleton.ConnectedClientsList[0].PlayerObject.GetComponent<NetworkPlayer>().LoadFinalScene();
         }
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    void TestServerRpc(int[] param) {
+    void Test(int[] param) {
         ballSpawnLocation.GetComponent<BallSpawn>().DeleteBall();
         started = true;
         parameters = param;
 
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    void ToggleGrabberHandleServerRpc() {
-        GrabberOpen = !GrabberOpen;
-        GrabberStatic = false;
-    }
-
     // Reset Grabber
     public void ResetGrabberMovement() {
-        ResetGrabberMovementServerRpc();
-        spawnFinalExplanationClientRpc();
+        transform.position = startPosition;
+        transform.rotation = startRotation;
+        stage = 0;
+
+        started = false;
+
+        spawnFinalExplanation();
     }
 
-    [ClientRpc]
-    private void spawnFinalExplanationClientRpc() {
+    private void spawnFinalExplanation() {
         if (parameters[0] == 3 && parameters[1] == 6) {
             // GO TO FINAL MACHINE
             lastexplanation.transform.position = PopupLocation.transform.position;
@@ -94,22 +87,11 @@ public class MoveGrabber : NetworkBehaviour
         }
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void ResetGrabberMovementServerRpc() {
-        transform.position = startPosition;
-        transform.rotation = startRotation;
-        stage = 0;
-
-        ToggleGrabberHandleServerRpc();
-        started = false;
-    }
-
     private double startTime = 0;
     private bool saved = false;
 
     // update Grabber Movement (server side )
-    [ServerRpc(RequireOwnership = false)]
-    void UpdateGrabberServerRpc() {
+    void UpdateGrabber() {
         if (!started) return;
 
         if (!saved) {
@@ -160,7 +142,5 @@ public class MoveGrabber : NetworkBehaviour
         }
 
         ResetGrabberMovement();
-
-        
     }
 }
