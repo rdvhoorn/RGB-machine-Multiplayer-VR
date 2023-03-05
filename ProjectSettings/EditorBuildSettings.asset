@@ -8,14 +8,26 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/VRTestScene.unity
     guid: 5bea7da427b9cdd40ac66a3f4ec71ee1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/VRMultiPlayerTestScene.unity
     guid: 77a9b618fc294a1469518ba303cc9771
-  - enabled: 0
-    path: Assets/Scenes/Whole Machine.unity
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 1444e52b17577f84c832593acbcf00bf
+  - enabled: 1
+    path: Assets/Scenes/SoftwareScene.unity
+    guid: 749d40acc63e2ec4b84da9352462669c
+  - enabled: 1
+    path: Assets/Scenes/MechenicalScene.unity
+    guid: 14039c406722fa742aed7860ff0f5581
+  - enabled: 1
+    path: Assets/Scenes/ElectricalScene.unity
+    guid: 66c77b06b08fe1843b66264b56ae2924
+  - enabled: 1
+    path: Assets/Scenes/WholeMachine.unity
     guid: d1cef382c59c8c342a8e8b8bab7217ea
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 238280feeb6cfa342bc09de25b295175,

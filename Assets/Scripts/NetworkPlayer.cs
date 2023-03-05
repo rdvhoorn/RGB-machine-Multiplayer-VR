@@ -6,16 +6,16 @@ using UnityEngine.InputSystem.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.SceneManagement;
 
+
 public class NetworkPlayer : NetworkBehaviour
 {
     private Vector3[] sps = new Vector3[3]{
-        new Vector3(-2.6789341f, 0.1f, -77.6600037f),
-        new Vector3(1.36106491f, 0.1f, -72.7900009f),
-        new Vector3(5.62106514f, 0.1f, -77.6600037f)
+        new Vector3(-26.2700005f,-0.0396533012f,16.8500004f), // electrical,
+        new Vector3(-62.2299995f,-0.0396533012f,19.9300003f), // software
+        new Vector3(-40.6399994f,-0.0396533012f,-0.389999866f), // mech
     };
 
     private Vector3[] sps_start = new Vector3[3]{
-        
         new Vector3(-26.2700005f,-0.0396533012f,16.8500004f), // electrical,
         new Vector3(-62.2299995f,-0.0396533012f,19.9300003f), // software
         new Vector3(-40.6399994f,-0.0396533012f,-0.389999866f), // mech
@@ -27,14 +27,14 @@ public class NetworkPlayer : NetworkBehaviour
         new Vector3(230.74527f,318,-311.751129f),
     };
 
-    private int numberConnectedClientsStart = 1;
+    private int numberConnectedClientsStart = 3;
 
     public override void OnNetworkSpawn()
     {
         DisableClientInput();
 
         if (IsOwner) {
-            transform.position = sps[NetworkManager.Singleton.LocalClientId];
+            transform.position = sps[NetworkManager.Singleton.LocalClientId % 3];
             
             CheckGameStartServerRpc();
         }
@@ -43,9 +43,15 @@ public class NetworkPlayer : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void CheckGameStartServerRpc() {
         Debug.Log(NetworkManager.Singleton.ConnectedClientsList.Count);
-        if (NetworkManager.Singleton.ConnectedClientsList.Count == numberConnectedClientsStart) {
-            StartGameClientRpc();
+        for (int i = 0; i < NetworkManager.Singleton.ConnectedClientsIds.Count; i++) {
+            Debug.Log(NetworkManager.Singleton.ConnectedClientsIds[i]);
         }
+        // if (NetworkManager.Singleton.ConnectedClientsList.Count >= numberConnectedClientsStart) {
+        //     for (int i = 0; i < NetworkManager.Singleton.ConnectedClients.Count; i++) {
+        //         NetworkManager.Singleton.ConnectedClientsList[i].PlayerObject.GetComponent<NetworkPlayer>().StartGameServerRpc();
+        //     }
+        //     StartGameServerRpc();
+        // }
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -56,7 +62,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     [ClientRpc]
     private void StartGameClientRpc() {
-        transform.position = sps_start[NetworkManager.Singleton.LocalClientId];
+        transform.position = sps_start[NetworkManager.Singleton.LocalClientId % 3];
     }
 
     public void DisableClientInput() {
@@ -119,7 +125,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     [ClientRpc]
     private void TransportfinalsceneClientRpc(ClientRpcParams crp) {
-        transform.position = finalLocations[NetworkManager.Singleton.LocalClientId];
+        transform.position = finalLocations[NetworkManager.Singleton.LocalClientId % 3];
     }
 
     public void RestartGame() {

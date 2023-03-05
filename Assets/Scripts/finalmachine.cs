@@ -17,4 +17,8 @@ public class finalmachine : MonoBehaviour
 
         grabber.GetComponent<Grabber>().StartGrabber();
     }
+
+    void Start() {
+        StartMachine();
+    }
 }

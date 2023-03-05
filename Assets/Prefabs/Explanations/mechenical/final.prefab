@@ -445,8 +445,6 @@ GameObject:
   - component: {fileID: 7956158406677093657}
   - component: {fileID: 7956158406677093656}
   - component: {fileID: 7956158406677093659}
-  - component: {fileID: 7956158406677093658}
-  - component: {fileID: 6856421241044496179}
   - component: {fileID: 790600375767672668}
   m_Layer: 5
   m_Name: Close button
@@ -558,7 +556,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6856421241044496179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ViewFinalMachineScript, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -570,33 +568,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7956158406677093658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7956158406677093660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cf2f740a35265f40a4c1d3f8f6225fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explanationCanvas: {fileID: 7956158405345363583}
---- !u!114 &6856421241044496179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7956158406677093660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b73527d2e7f7c42a628e379b90cab4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  explanationCanvas: {fileID: 7956158405345363583}
 --- !u!114 &790600375767672668
 MonoBehaviour:
   m_ObjectHideFlags: 0

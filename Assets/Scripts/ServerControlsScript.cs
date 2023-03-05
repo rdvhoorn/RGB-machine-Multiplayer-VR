@@ -24,13 +24,24 @@ public class ServerControlsScript : NetworkBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
+            goToMainServerRpc();
+
             int count = NetworkManager.Singleton.ConnectedClientsIds.Count;
             for (int i = 0; i < count; i++) {
                 NetworkManager.Singleton.DisconnectClient(NetworkManager.Singleton.ConnectedClientsIds[i]);
             }
 
             NetworkManager.Singleton.Shutdown();
-            UnityEngine.SceneManagement.SceneManager.LoadScene("VRTestScene");
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void goToMainServerRpc() {
+        goToMainClientRpc();
+    }
+
+    [ClientRpc]
+    void goToMainClientRpc() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VRTestScene");
     }
 }
