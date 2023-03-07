@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
 public enum GateTypes {AND, OR, XOR, NAND, NOT, NONE};
 
-public class Electrical : NetworkBehaviour
+public class Electrical : MonoBehaviour
 {
     private bool initialized = false;
     private Gate[] standardGates;
